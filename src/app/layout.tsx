@@ -5,6 +5,7 @@ import { Navigation } from '@/components/organisms/navigation/Navigation'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/providers/ThemeProviders'
 import { ToasterProvider } from '@/providers/ToasterProvider'
+import { AuthProvider } from '@/providers/AuthProvider'
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -33,13 +34,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ToasterProvider>
-            <div className="flex h-screen w-full flex-col">
-              <Navigation />
-              <div className="h-full m-auto">{children}</div>
-              <footer className='text-center border-t'>2023</footer>
-            </div>
-          </ToasterProvider>
+          <AuthProvider>
+            <ToasterProvider>
+              <div className="flex h-screen w-full flex-col">
+                <Navigation />
+                <div className="h-full m-auto">{children}</div>
+                <footer className='text-center border-t'>2023</footer>
+              </div>
+            </ToasterProvider>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

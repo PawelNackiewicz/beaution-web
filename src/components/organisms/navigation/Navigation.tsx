@@ -5,11 +5,13 @@ import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes"
 import { Bruno_Ace_SC } from 'next/font/google'
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/providers/AuthProvider";
 
 const brunoAceSC = Bruno_Ace_SC({ weight: "400", subsets: ["latin"] })
 
 export const Navigation = () => {
   const { setTheme, theme } = useTheme()
+  const { user } = useAuth()
 
   return (
     <nav className="border-b p-4">
@@ -45,9 +47,16 @@ export const Navigation = () => {
             }
           </button>
           <div className="px-4 flex gap-2 items-center">
-            <Link href="/login">
-              <Button variant='outline'>Zaloguj</Button>
-            </Link>
+            {
+              user ?
+                <Link href="/login">
+                  <Button variant='outline'>Wyloguj</Button>
+                </Link>
+                :
+                <Link href="/logout">
+                  <Button variant='outline'>Zaloguj</Button>
+                </Link>
+            }
             <Link href="/register">
               <Button>Dołącz do programu</Button>
             </Link>

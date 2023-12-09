@@ -14,6 +14,8 @@ import {
     useToast
 } from "@/components/organisms";
 import { PageLoadSpinner } from "@/components/molecules";
+import { getMe, login } from "@/services/AuthService";
+import { useAuth } from "@/providers/AuthProvider";
 
 const required_error = "Pole jest wymagane";
 
@@ -33,12 +35,13 @@ const FormSchema = z.object({
 
 export function LoginForm() {
     const { toast } = useToast();
+    const { setUser } = useAuth();
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
             email: "",
             password: "",
-            rememberMe: false,
+            rememberMe: true,
         },
     });
 
@@ -46,6 +49,10 @@ export function LoginForm() {
         setIsLoading(true);
 
         try {
+            const token = await login(data.email, data.password);
+            localStorage.setItem("authToken", token);
+            const user = await getMe(token);
+            setUser(user)
             toast({
                 variant: "default",
                 title: "Logged in",
