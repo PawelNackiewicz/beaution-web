@@ -3,9 +3,8 @@ export async function login(email: string, password: string) {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
-			// "X-API-Key": `${process.env.NEXT_PUBLIC_API_KEY}`,
-			credentials: "include",
 		},
+		credentials: "include",
 		body: JSON.stringify({ login: email, password }),
 	});
 
@@ -18,10 +17,9 @@ export async function login(email: string, password: string) {
 export async function getMe() {
 	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/sessions/me`, {
 		method: "GET",
+		credentials: "include",
 		headers: {
 			"Content-Type": "application/json",
-			credentials: "include",
-			// "X-API-Key": `${process.env.NEXT_PUBLIC_API_KEY}`,
 		},
 	});
 
