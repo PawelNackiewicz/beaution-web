@@ -49,11 +49,11 @@ export const Navigation = () => {
           <div className="px-4 flex gap-2 items-center">
             {
               user ?
-                <Link href="/login">
+                <Link href="/logout">
                   <Button variant='outline'>Wyloguj</Button>
                 </Link>
                 :
-                <Link href="/logout">
+                <Link href="/login">
                   <Button variant='outline'>Zaloguj</Button>
                 </Link>
             }
