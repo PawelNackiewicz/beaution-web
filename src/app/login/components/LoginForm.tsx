@@ -14,7 +14,7 @@ import {
     useToast
 } from "@/components/organisms";
 import { PageLoadSpinner } from "@/components/molecules";
-import { getMe, login } from "@/services/AuthService";
+import { getMe, login } from "@/services/authService";
 import { useAuth } from "@/providers/AuthProvider";
 
 const required_error = "Pole jest wymagane";
