@@ -14,7 +14,7 @@ import {
     useToast
 } from "@/components/organisms";
 import { PageLoadSpinner } from "@/components/molecules";
-import { getMe, login } from "@/services/AuthService";
+import { getMe, login } from "@/services/authService";
 import { useAuth } from "@/providers/AuthProvider";
 
 const required_error = "Pole jest wymagane";
@@ -47,17 +47,18 @@ export function LoginForm() {
 
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         setIsLoading(true);
-
         try {
-            const token = await login(data.email, data.password);
-            localStorage.setItem("authToken", token);
-            const user = await getMe(token);
+            const r = await login(data.email, data.password);
+            console.log(r);
+            const user = await getMe();
             setUser(user)
             toast({
                 variant: "default",
                 title: "Logged in",
             });
         } catch (e) {
+            console.log(e);
+
             toast({
                 variant: "destructive",
                 title: "Failed to log in check your data.",

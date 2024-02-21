@@ -1,5 +1,4 @@
 "use client";
-import { getMe } from "@/services/AuthService";
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface User {
@@ -19,14 +18,13 @@ export function AuthProvider({
 }: { children: React.ReactNode }) {
     const [user, setUser] = useState<{ id: number; name: string } | null>(null)
 
-    useEffect(() => {
-        const authToken = localStorage.getItem("authToken")
-        if (authToken) {
-            getMe(authToken).then((user) => {
-                setUser(user)
-            })
-        }
-    }, [])
+    // useEffect(() => {
+    //     getMe().then((user) => {
+    //         setUser(user)
+    //     }).catch(() => {
+    //         setUser(null)
+    //     })
+    // }, [])
 
     return (
         <AuthContext.Provider
