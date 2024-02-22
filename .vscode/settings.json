@@ -3,7 +3,8 @@
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.codeActionsOnSave": {
-		"source.fixAll": "explicit"
+		"source.fixAll": "explicit",
+		"source.organizeImports": "explicit"
 	},
 	"files.associations": {
 		"*.css": "tailwindcss"
@@ -14,7 +15,9 @@
 	"[jsonc]": {
 		"editor.defaultFormatter": "vscode.json-language-features"
 	},
-	"[typescriptreact]": {
-		"editor.defaultFormatter": "vscode.typescript-language-features"
-	}
+	"workbench.sideBar.location": "right",
+	"workbench.colorTheme": "Community Material Theme Ocean High Contrast",
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"git.openRepositoryInParentFolders": "never"
 }
