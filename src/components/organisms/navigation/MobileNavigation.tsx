@@ -10,12 +10,10 @@ import { useState } from "react";
 
 const brunoAceSC = Bruno_Ace_SC({ weight: "400", subsets: ["latin"] });
 
-type MobileNavigationProps = {};
-
 export const MobileNavigation = () => {
 	const { setTheme, theme } = useTheme();
 	const { user } = useAuth();
-	const [isOpen, setIsOpen] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<div className="m-auto flex flex-col">
