@@ -1,27 +1,15 @@
 "use client";
-import { Button } from "@/components/atoms";
-import { cn } from "@/lib/utils";
+import { Button, Logo, ThemeSwitcher } from "@/components/atoms";
 import { useAuth } from "@/providers/AuthProvider";
-import { MoonIcon, SunIcon } from "lucide-react";
-import { useTheme } from "next-themes";
-import { Bruno_Ace_SC } from "next/font/google";
 import Link from "next/link";
 
-const brunoAceSC = Bruno_Ace_SC({ weight: "400", subsets: ["latin"] });
-
 export const DesktopNavigation = () => {
-	const { setTheme, theme } = useTheme();
 	const { user } = useAuth();
 
 	return (
 		<div className="m-auto flex max-w-7xl items-center justify-between">
 			<Link href="/">
-				<p
-					style={{ fill: theme === "dark" ? "white" : "black" }}
-					className={cn(brunoAceSC.className, "text-3xl")}
-				>
-					BEAUTION
-				</p>
+				<Logo />
 			</Link>
 			<ul>
 				<li className="flex gap-4">
@@ -39,9 +27,7 @@ export const DesktopNavigation = () => {
 				</li>
 			</ul>
 			<div className="flex items-center gap-4 divide-x-2">
-				<button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-					{theme === "dark" ? <SunIcon /> : <MoonIcon />}
-				</button>
+				<ThemeSwitcher />
 				<div className="flex items-center gap-2 px-4">
 					{user ? (
 						<Link href="/logout">

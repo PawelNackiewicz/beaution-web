@@ -1,17 +1,11 @@
 "use client";
-import { Button } from "@/components/atoms";
-import { cn } from "@/lib/utils";
+import { Button, Logo, ThemeSwitcher } from "@/components/atoms";
 import { useAuth } from "@/providers/AuthProvider";
-import { MenuIcon, MoonIcon, SunIcon, XIcon } from "lucide-react";
-import { useTheme } from "next-themes";
-import { Bruno_Ace_SC } from "next/font/google";
+import { MenuIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-const brunoAceSC = Bruno_Ace_SC({ weight: "400", subsets: ["latin"] });
-
 export const MobileNavigation = () => {
-	const { setTheme, theme } = useTheme();
 	const { user } = useAuth();
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -19,12 +13,7 @@ export const MobileNavigation = () => {
 		<div className="m-auto flex flex-col">
 			<div className="flex w-full items-center justify-between">
 				<Link href="/">
-					<p
-						style={{ fill: theme === "dark" ? "white" : "black" }}
-						className={cn(brunoAceSC.className, "text-3xl")}
-					>
-						BEAUTION
-					</p>
+					<Logo />
 				</Link>
 				<div className="flex items-center">
 					<button onClick={() => setIsOpen(!isOpen)}>
@@ -55,9 +44,7 @@ export const MobileNavigation = () => {
 					</li>
 				</ul>
 				<div className="flex w-full justify-between gap-4 border-t py-4">
-					<button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-						{theme === "dark" ? <SunIcon /> : <MoonIcon />}
-					</button>
+					<ThemeSwitcher />
 					{user ? (
 						<Link href="/logout">
 							<Button variant="outline">Wyloguj</Button>
