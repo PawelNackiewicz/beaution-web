@@ -33,7 +33,9 @@ const FormSchema = z.object({
 	rememberMe: z.boolean().optional(),
 });
 
-export function LoginForm() {
+type LoginFormProps = { onForgotPasswordClick: () => void };
+
+export function LoginForm({ onForgotPasswordClick }: LoginFormProps) {
 	const [isLoading, setIsLoading] = useState(false);
 	const { toast } = useToast();
 	const { setUser } = useAuth();
@@ -109,7 +111,7 @@ export function LoginForm() {
 							</FormItem>
 						)}
 					/>
-					<Button type="button" variant="link">
+					<Button type="button" variant="link" onClick={onForgotPasswordClick}>
 						<p className="text-gray-500 hover:text-black hover:dark:text-white">
 							Zapomniałeś hasła?
 						</p>

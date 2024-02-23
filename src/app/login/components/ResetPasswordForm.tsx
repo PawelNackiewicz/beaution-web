@@ -2,12 +2,12 @@
 import { Button, Input } from "@/components/atoms";
 import { PageLoadSpinner } from "@/components/molecules";
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormMessage,
-    useToast
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormMessage,
+	useToast,
 } from "@/components/organisms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -26,19 +26,17 @@ const FormSchema = z.object({
 		}),
 });
 
-
-type ResetPasswordFormProps = {}
+type ResetPasswordFormProps = {};
 
 export const ResetPasswordForm = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const { toast } = useToast();
+	const [isLoading, setIsLoading] = useState(false);
+	const { toast } = useToast();
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
 		defaultValues: {
 			email: "",
 		},
 	});
-
 
 	async function onSubmit(data: z.infer<typeof FormSchema>) {
 		setIsLoading(true);
@@ -60,7 +58,7 @@ export const ResetPasswordForm = () => {
 
 	if (isLoading) return <PageLoadSpinner />;
 
-    return (
+	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full flex-col gap-4">
 				<FormField
@@ -75,7 +73,8 @@ export const ResetPasswordForm = () => {
 						</FormItem>
 					)}
 				/>
-				<Button type="submit">Login</Button>
+				<Button type="submit">Resetuj hasło</Button>
 			</form>
 		</Form>
+	);
 };
