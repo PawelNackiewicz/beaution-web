@@ -1,17 +1,15 @@
 "use client";
-import { Button, Checkbox, Input } from "@/components/atoms";
+import { Button, Input } from "@/components/atoms";
 import { PageLoadSpinner } from "@/components/molecules";
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
-	FormLabel,
 	FormMessage,
 	useToast,
 } from "@/components/organisms";
-import { useAuth } from "@/providers/AuthProvider";
-import { getMe, login } from "@/services/authService";
+import { register } from "@/services/authService";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -30,30 +28,31 @@ const FormSchema = z.object({
 	password: z.string({
 		required_error,
 	}),
-	rememberMe: z.boolean().optional(),
+	firstName: z.string({
+		required_error,
+	}),
+	lastName: z.string({
+		required_error,
+	}),
 });
 
-type LoginFormProps = { onForgotPasswordClick: () => void };
-
-export function LoginForm({ onForgotPasswordClick }: LoginFormProps) {
+export function RegisterForm() {
 	const [isLoading, setIsLoading] = useState(false);
 	const { toast } = useToast();
-	const { setUser } = useAuth();
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
 		defaultValues: {
 			email: "",
 			password: "",
-			rememberMe: true,
+			lastName: "",
+			firstName: "",
 		},
 	});
 
 	async function onSubmit(data: z.infer<typeof FormSchema>) {
 		setIsLoading(true);
 		try {
-			await login(data.email, data.password);
-			const user = await getMe();
-			setUser(user);
+			await register(data);
 			toast({
 				variant: "default",
 				title: "Logged in",
@@ -74,6 +73,30 @@ export function LoginForm({ onForgotPasswordClick }: LoginFormProps) {
 	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full flex-col gap-4">
+				<FormField
+					control={form.control}
+					name="firstName"
+					render={({ field }) => (
+						<FormItem>
+							<FormControl>
+								<Input placeholder="Imie" {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name="lastName"
+					render={({ field }) => (
+						<FormItem>
+							<FormControl>
+								<Input placeholder="Nazwisko" {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
 				<FormField
 					control={form.control}
 					name="email"
@@ -98,26 +121,7 @@ export function LoginForm({ onForgotPasswordClick }: LoginFormProps) {
 						</FormItem>
 					)}
 				/>
-				<div className="flex w-full items-center justify-between">
-					<FormField
-						control={form.control}
-						name="rememberMe"
-						render={({ field }) => (
-							<FormItem className="flex flex-row items-center space-x-3 space-y-0">
-								<FormControl>
-									<Checkbox checked={field.value} onCheckedChange={field.onChange} />
-								</FormControl>
-								<FormLabel>Zapamiętaj mnie</FormLabel>
-							</FormItem>
-						)}
-					/>
-					<Button type="button" variant="link" onClick={onForgotPasswordClick}>
-						<p className="text-gray-500 hover:text-black hover:dark:text-white">
-							Zapomniałeś hasła?
-						</p>
-					</Button>
-				</div>
-				<Button type="submit">Login</Button>
+				<Button type="submit">Rejestruj</Button>
 			</form>
 		</Form>
 	);
