@@ -24,25 +24,34 @@ const FormSchema = z.object({
 		.email({
 			message: "Niepoprawny adres email",
 		}),
+	password: z.string({
+		required_error,
+	}),
+	firstName: z.string({
+		required_error,
+	}),
+	lastName: z.string({
+		required_error,
+	}),
 });
 
-type ResetPasswordFormProps = {
-	onBackClick: () => void;
-};
-
-export const ResetPasswordForm = ({ onBackClick }: ResetPasswordFormProps) => {
+export function RegisterForm() {
 	const [isLoading, setIsLoading] = useState(false);
 	const { toast } = useToast();
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
 		defaultValues: {
 			email: "",
+			password: "",
+			lastName: "",
+			firstName: "",
 		},
 	});
 
 	async function onSubmit(data: z.infer<typeof FormSchema>) {
 		setIsLoading(true);
 		try {
+			console.log(data);
 			toast({
 				variant: "default",
 				title: "Logged in",
@@ -65,6 +74,30 @@ export const ResetPasswordForm = ({ onBackClick }: ResetPasswordFormProps) => {
 			<form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full flex-col gap-4">
 				<FormField
 					control={form.control}
+					name="firstName"
+					render={({ field }) => (
+						<FormItem>
+							<FormControl>
+								<Input placeholder="Imie" {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name="lastName"
+					render={({ field }) => (
+						<FormItem>
+							<FormControl>
+								<Input placeholder="Nazwisko" {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
 					name="email"
 					render={({ field }) => (
 						<FormItem>
@@ -75,11 +108,20 @@ export const ResetPasswordForm = ({ onBackClick }: ResetPasswordFormProps) => {
 						</FormItem>
 					)}
 				/>
-				<Button type="submit">Resetuj hasło</Button>
-				<Button type="button" className="self-end" variant="link" onClick={onBackClick}>
-					<p className="text-gray-500 hover:text-black hover:dark:text-white">Do logowania</p>
-				</Button>
+				<FormField
+					control={form.control}
+					name="password"
+					render={({ field }) => (
+						<FormItem>
+							<FormControl>
+								<Input placeholder="Hasło" {...field} type="password" />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<Button type="submit">Rejestruj</Button>
 			</form>
 		</Form>
 	);
-};
+}
