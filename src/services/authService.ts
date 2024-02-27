@@ -29,3 +29,29 @@ export async function getMe() {
 
 	return res.json();
 }
+
+export async function register({
+	email,
+	password,
+	firstName,
+	lastName,
+}: {
+	email: string;
+	password: string;
+	firstName: string;
+	lastName: string;
+}) {
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/users`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ login: email, password, firstName, lastName }),
+	});
+
+	if (res.status !== 201) {
+		throw new Error("Failed to create user");
+	}
+
+	return res.json();
+}

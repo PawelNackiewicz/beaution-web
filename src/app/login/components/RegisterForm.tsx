@@ -9,6 +9,7 @@ import {
 	FormMessage,
 	useToast,
 } from "@/components/organisms";
+import { register } from "@/services/authService";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -51,7 +52,7 @@ export function RegisterForm() {
 	async function onSubmit(data: z.infer<typeof FormSchema>) {
 		setIsLoading(true);
 		try {
-			console.log(data);
+			await register(data);
 			toast({
 				variant: "default",
 				title: "Logged in",
