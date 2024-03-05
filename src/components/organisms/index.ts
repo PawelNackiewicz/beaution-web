@@ -27,18 +27,19 @@ export {
 	FormMessage,
 	useFormField,
 } from "./form/Form";
+export { Icon } from "./icon/Icon";
 export { Navigation } from "./navigation/Navigation";
 export { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs/Tabs";
 export {
 	Toast,
 	ToastAction,
-	type ToastActionElement,
 	ToastClose,
 	ToastDescription,
-	type ToastProps,
 	ToastProvider,
 	ToastTitle,
 	ToastViewport,
+	type ToastActionElement,
+	type ToastProps,
 } from "./toast/Toast";
 export { Toaster } from "./toast/Toaster";
 export { reducer, toast, useToast } from "./toast/use-toast";
