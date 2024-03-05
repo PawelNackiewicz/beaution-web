@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "@/components/organisms";
 import Image from "next/image";
 import { useState } from "react";
 import { LoginForm } from "./components/LoginForm";
@@ -13,7 +14,7 @@ export default function LoginPage() {
 			<div className="grid grid-cols-1 rounded-xl bg-slate-100 p-2 dark:bg-gray-700 md:grid-cols-5">
 				<Image src="/login.svg" alt="logo" width={800} height={800} className="col-span-3 " />
 				<div className="col-span-2 flex flex-col items-center justify-center gap-8 rounded-xl bg-white p-2 dark:bg-black md:p-20">
-					<Image src="/rocket.svg" alt="rocket" width={40} height={40} />
+					<Icon name="rocket" size={100} />
 					{mode === "resetPassword" && (
 						<>
 							<div className="flex flex-col items-center gap-4">

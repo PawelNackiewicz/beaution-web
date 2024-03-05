@@ -28,4 +28,4 @@ const Icon = ({ name, classNamePath, ...wrapperProps }: IconProps) => {
 	);
 };
 
-export default Icon;
+export { Icon };
