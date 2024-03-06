@@ -2,6 +2,7 @@
 import { Button, Logo, ThemeSwitcher } from "@/components/atoms";
 import { useAuth } from "@/providers/AuthProvider";
 import Link from "next/link";
+import { links } from "./links";
 
 export const DesktopNavigation = () => {
 	const { user } = useAuth();
@@ -11,20 +12,14 @@ export const DesktopNavigation = () => {
 			<Link href="/">
 				<Logo />
 			</Link>
-			<ul>
-				<li className="flex gap-4">
-					<Link href="/">
-						<Button variant="link">Funkcje</Button>
-					</Link>
-
-					<Link href="/about">
-						<Button variant="link">O Projekcie</Button>
-					</Link>
-
-					<Link href="/contact">
-						<Button variant="link">Blog</Button>
-					</Link>
-				</li>
+			<ul className="flex gap-4">
+				{links.map((link) => (
+					<li key={link.href}>
+						<Link href={link.href}>
+							<Button variant="link">{link.label}</Button>
+						</Link>
+					</li>
+				))}
 			</ul>
 			<div className="flex items-center gap-4 divide-x-2">
 				<ThemeSwitcher />

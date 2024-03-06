@@ -4,6 +4,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { MenuIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { links } from "./links";
 
 export const MobileNavigation = () => {
 	const { user } = useAuth();
@@ -27,21 +28,13 @@ export const MobileNavigation = () => {
 				}`}
 			>
 				<ul className="flex w-full flex-col items-end gap-2 py-4">
-					<li>
-						<Link href="/">
-							<Button variant="link">Funkcje</Button>
-						</Link>
-					</li>
-					<li>
-						<Link href="/about">
-							<Button variant="link">O Projekcie</Button>
-						</Link>
-					</li>
-					<li>
-						<Link href="/contact">
-							<Button variant="link">Blog</Button>
-						</Link>
-					</li>
+					{links.map((link) => (
+						<li key={link.href}>
+							<Link href={link.href}>
+								<Button variant="link">{link.label}</Button>
+							</Link>
+						</li>
+					))}
 				</ul>
 				<div className="flex w-full justify-between gap-4 border-t py-4">
 					<ThemeSwitcher />
