@@ -1,5 +1,5 @@
 "use client";
-import { getMe } from "@/services/authService";
+import { getMe, logout } from "@/services/authService";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 export interface User {
@@ -10,6 +10,7 @@ export interface User {
 interface AuthProviderType {
 	user: User | null;
 	setUser: React.Dispatch<React.SetStateAction<User | null>>;
+	signOut: () => void;
 }
 
 const AuthContext = createContext<AuthProviderType | undefined>(undefined);
@@ -20,7 +21,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 	useEffect(() => {
 		getMe()
 			.then((user) => {
-				console.log(user);
 				setUser(user);
 			})
 			.catch(() => {
@@ -28,11 +28,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 			});
 	}, []);
 
+	const signOut = () => {
+		setUser(null);
+		logout();
+	};
+
 	return (
 		<AuthContext.Provider
 			value={{
 				user,
 				setUser,
+				signOut,
 			}}
 		>
 			{children}

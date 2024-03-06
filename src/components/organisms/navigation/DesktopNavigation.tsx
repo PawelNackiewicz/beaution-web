@@ -5,7 +5,7 @@ import Link from "next/link";
 import { links } from "./links";
 
 export const DesktopNavigation = () => {
-	const { user } = useAuth();
+	const { user, signOut } = useAuth();
 
 	return (
 		<div className="m-auto flex max-w-7xl items-center justify-between">
@@ -25,9 +25,9 @@ export const DesktopNavigation = () => {
 				<ThemeSwitcher />
 				<div className="flex items-center gap-2 px-4">
 					{user ? (
-						<Link href="/logout">
-							<Button variant="outline">Wyloguj</Button>
-						</Link>
+						<Button onClick={signOut} variant="outline">
+							Wyloguj
+						</Button>
 					) : (
 						<>
 							<Link href="/login">

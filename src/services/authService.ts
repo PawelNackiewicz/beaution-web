@@ -11,10 +11,17 @@ export async function login(email: string, password: string) {
 	if (res.status !== 201) {
 		throw new Error("Failed to login");
 	}
+	localStorage.setItem("sessionId", new Date().getTime().toString());
 	return res.text();
 }
 
+export async function logout() {
+	localStorage.removeItem("sessionId");
+}
+
 export async function getMe() {
+	if (!localStorage.getItem("sessionId")) return;
+
 	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/sessions/me`, {
 		method: "GET",
 		credentials: "include",

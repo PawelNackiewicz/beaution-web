@@ -7,7 +7,7 @@ import { useState } from "react";
 import { links } from "./links";
 
 export const MobileNavigation = () => {
-	const { user } = useAuth();
+	const { user, signOut } = useAuth();
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
@@ -39,17 +39,19 @@ export const MobileNavigation = () => {
 				<div className="flex w-full justify-between gap-4 border-t py-4">
 					<ThemeSwitcher />
 					{user ? (
-						<Link href="/logout">
-							<Button variant="outline">Wyloguj</Button>
-						</Link>
+						<Button onClick={signOut} variant="outline">
+							Wyloguj
+						</Button>
 					) : (
-						<Link href="/login">
-							<Button variant="outline">Zaloguj</Button>
-						</Link>
+						<>
+							<Link href="/login">
+								<Button variant="outline">Zaloguj</Button>
+							</Link>
+							<Link href="/register">
+								<Button>Dołącz do programu</Button>
+							</Link>
+						</>
 					)}
-					<Link href="/register">
-						<Button>Dołącz do programu</Button>
-					</Link>
 				</div>
 			</div>
 		</div>
