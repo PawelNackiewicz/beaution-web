@@ -29,13 +29,15 @@ export const DesktopNavigation = () => {
 							<Button variant="outline">Wyloguj</Button>
 						</Link>
 					) : (
-						<Link href="/login">
-							<Button variant="outline">Zaloguj</Button>
-						</Link>
+						<>
+							<Link href="/login">
+								<Button variant="outline">Zaloguj</Button>
+							</Link>
+							<Link href="/register">
+								<Button>Dołącz do programu</Button>
+							</Link>
+						</>
 					)}
-					<Link href="/register">
-						<Button>Dołącz do programu</Button>
-					</Link>
 				</div>
 			</div>
 		</div>
