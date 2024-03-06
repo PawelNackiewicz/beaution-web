@@ -1,5 +1,6 @@
 "use client";
-import React, { createContext, useContext, useState } from "react";
+import { getMe } from "@/services/authService";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 export interface User {
 	id: number;
@@ -16,13 +17,16 @@ const AuthContext = createContext<AuthProviderType | undefined>(undefined);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
 	const [user, setUser] = useState<{ id: number; name: string } | null>(null);
 
-	// useEffect(() => {
-	//     getMe().then((user) => {
-	//         setUser(user)
-	//     }).catch(() => {
-	//         setUser(null)
-	//     })
-	// }, [])
+	useEffect(() => {
+		getMe()
+			.then((user) => {
+				console.log(user);
+				setUser(user);
+			})
+			.catch(() => {
+				setUser(null);
+			});
+	}, []);
 
 	return (
 		<AuthContext.Provider
