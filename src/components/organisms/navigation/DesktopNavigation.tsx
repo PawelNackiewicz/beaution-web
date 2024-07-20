@@ -1,8 +1,8 @@
 "use client";
-import { Button, Logo, ThemeSwitcher } from "@/components/atoms";
-import { useAuth } from "@/providers/AuthProvider";
 import Link from "next/link";
 import { links } from "./links";
+import { Button, Logo, ThemeSwitcher } from "@/components/atoms";
+import { useAuth } from "@/providers/AuthProvider";
 
 export const DesktopNavigation = () => {
 	const { user, signOut } = useAuth();
