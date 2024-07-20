@@ -9,6 +9,7 @@ export const DesktopNavigation = () => {
 
 	return (
 		<div className="m-auto flex max-w-7xl items-center justify-between">
+			Main branch
 			<Link href="/">
 				<Logo />
 			</Link>
