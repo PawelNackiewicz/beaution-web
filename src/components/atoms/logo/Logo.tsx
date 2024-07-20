@@ -1,7 +1,7 @@
 "use client";
-import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { Bruno_Ace_SC } from "next/font/google";
+import { cn } from "@/lib/utils";
 
 const brunoAceSC = Bruno_Ace_SC({ weight: "400", subsets: ["latin"] });
 
