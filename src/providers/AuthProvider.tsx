@@ -1,6 +1,6 @@
 "use client";
-import { getMe, logout } from "@/services/authService";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { getMe, logout } from "@/services/authService";
 
 export interface User {
 	id: number;
@@ -29,8 +29,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 	}, []);
 
 	const signOut = () => {
-		setUser(null);
-		logout();
+		void setUser(null);
+		void logout();
 	};
 
 	return (

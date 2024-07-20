@@ -46,7 +46,7 @@ export async function getMe() {
 		throw new Error("Failed to get user");
 	}
 
-	return res.json();
+	return res.json() as unknown as User;
 }
 
 export async function register({
@@ -74,3 +74,8 @@ export async function register({
 
 	return res.json();
 }
+
+type User = {
+	id: number;
+	name: string;
+};

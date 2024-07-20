@@ -1,10 +1,10 @@
 "use client";
-import { Icon } from "@/components/organisms";
 import Image from "next/image";
 import { useState } from "react";
 import { LoginForm } from "./components/LoginForm";
 import { RegisterForm } from "./components/RegisterForm";
 import { ResetPasswordForm } from "./components/ResetPasswordForm";
+import { Icon } from "@/components/organisms";
 
 export default function LoginPage() {
 	const [mode, setMode] = useState<"login" | "resetPassword" | "register">("login");
