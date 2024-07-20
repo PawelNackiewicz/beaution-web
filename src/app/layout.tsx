@@ -1,10 +1,10 @@
+import type { Metadata } from "next";
+import { Inter as FontSans } from "next/font/google";
 import { Navigation } from "@/components/organisms/navigation/Navigation";
 import { cn } from "@/lib/utils";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { ThemeProvider } from "@/providers/ThemeProviders";
 import { ToasterProvider } from "@/providers/ToasterProvider";
-import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 
 const fontSans = FontSans({

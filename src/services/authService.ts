@@ -31,8 +31,8 @@ export async function logout() {
 	}
 }
 
-export async function getMe() {
-	if (!localStorage.getItem("sessionId")) return;
+export async function getMe(): Promise<User | null> {
+	if (!localStorage.getItem("sessionId")) return null;
 
 	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/sessions/me`, {
 		method: "GET",
@@ -46,7 +46,7 @@ export async function getMe() {
 		throw new Error("Failed to get user");
 	}
 
-	return res.json();
+	return res.json() as unknown as User;
 }
 
 export async function register({
@@ -74,3 +74,8 @@ export async function register({
 
 	return res.json();
 }
+
+type User = {
+	id: number;
+	name: string;
+};

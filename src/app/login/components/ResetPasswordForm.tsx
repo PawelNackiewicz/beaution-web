@@ -1,6 +1,8 @@
 "use client";
-import { Button, Input } from "@/components/atoms";
-import { PageLoadSpinner } from "@/components/molecules";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 import {
 	Form,
 	FormControl,
@@ -9,10 +11,8 @@ import {
 	FormMessage,
 	useToast,
 } from "@/components/organisms";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
+import { PageLoadSpinner } from "@/components/molecules";
+import { Button, Input } from "@/components/atoms";
 
 const required_error = "Pole jest wymagane";
 
@@ -40,7 +40,7 @@ export const ResetPasswordForm = ({ onBackClick }: ResetPasswordFormProps) => {
 		},
 	});
 
-	async function onSubmit(data: z.infer<typeof FormSchema>) {
+	async function onSubmit(_data: z.infer<typeof FormSchema>) {
 		setIsLoading(true);
 		try {
 			toast({

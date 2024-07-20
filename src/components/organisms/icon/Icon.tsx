@@ -1,4 +1,4 @@
-import IconWrapper, { IconProps as IconWrapperProps } from "./IconWrapper";
+import IconWrapper, { type IconProps as IconWrapperProps } from "./IconWrapper";
 import { defaultIcons } from "./Icons";
 
 export interface IconProps extends IconWrapperProps {

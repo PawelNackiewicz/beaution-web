@@ -1,4 +1,8 @@
 "use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 import { Button, Input } from "@/components/atoms";
 import { PageLoadSpinner } from "@/components/molecules";
 import {
@@ -10,10 +14,6 @@ import {
 	useToast,
 } from "@/components/organisms";
 import { register } from "@/services/authService";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
 
 const required_error = "Pole jest wymagane";
 

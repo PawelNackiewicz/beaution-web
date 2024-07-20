@@ -1,10 +1,10 @@
 "use client";
-import { Button, Logo, ThemeSwitcher } from "@/components/atoms";
-import { useAuth } from "@/providers/AuthProvider";
 import { MenuIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { links } from "./links";
+import { useAuth } from "@/providers/AuthProvider";
+import { Button, Logo, ThemeSwitcher } from "@/components/atoms";
 
 export const MobileNavigation = () => {
 	const { user, signOut } = useAuth();
