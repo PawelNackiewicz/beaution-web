@@ -31,8 +31,8 @@ export async function logout() {
 	}
 }
 
-export async function getMe() {
-	if (!localStorage.getItem("sessionId")) return;
+export async function getMe(): Promise<User | null> {
+	if (!localStorage.getItem("sessionId")) return null;
 
 	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/sessions/me`, {
 		method: "GET",

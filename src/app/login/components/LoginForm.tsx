@@ -1,7 +1,7 @@
 "use client";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button, Checkbox, Input } from "@/components/atoms";
 import { PageLoadSpinner } from "@/components/molecules";
@@ -52,9 +52,7 @@ export function LoginForm({ onForgotPasswordClick }: LoginFormProps) {
 		setIsLoading(true);
 		try {
 			await login(data.email, data.password);
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			const user = await getMe();
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 			setUser(user);
 			toast({
 				variant: "default",
