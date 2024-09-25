@@ -65,7 +65,7 @@ export async function register({
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({ login: email, password, firstName, lastName }),
+		body: JSON.stringify({ email, password, firstName, lastName }),
 	});
 
 	if (res.status !== 201) {
