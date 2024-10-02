@@ -1,12 +1,4 @@
-import { Button } from "@/components/atoms";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@/components/organisms";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/organisms";
 import { cn } from "@/lib/utils";
 
 export const RecentActivity = () => {

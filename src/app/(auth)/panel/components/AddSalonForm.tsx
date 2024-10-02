@@ -32,7 +32,7 @@ export function AddSalonForm() {
 		},
 	});
 
-	async function onSubmit(data: z.infer<typeof FormSchema>) {
+	async function onSubmit() {
 		setIsLoading(true);
 		try {
 			toast({

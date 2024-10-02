@@ -3,7 +3,6 @@ import { getUserSalons, type Salon } from "@/services/salonService";
 
 export function SalonList() {
 	const [salons, setSalons] = useState<Salon[]>([]);
-	const [error, setError] = useState<string | null>(null);
 
 	useEffect(() => {
 		const fetchSalons = async () => {
@@ -11,7 +10,7 @@ export function SalonList() {
 				const res = await getUserSalons();
 				setSalons(res);
 			} catch (error) {
-				setError("Failed to fetch salons");
+				console.error(error);
 			}
 		};
 
