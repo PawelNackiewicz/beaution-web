@@ -1,3 +1,12 @@
+export type User = {
+	id: number;
+	email: string;
+	firstName: string;
+	lastName: string;
+	status: string;
+	roles: string[];
+};
+
 export async function login(email: string, password: string) {
 	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/sessions`, {
 		method: "POST",
@@ -5,10 +14,10 @@ export async function login(email: string, password: string) {
 			"Content-Type": "application/json",
 		},
 		credentials: "include",
-		body: JSON.stringify({ login: email, password }),
+		body: JSON.stringify({ email, password }),
 	});
 
-	if (res.status !== 201) {
+	if (res.status !== 200) {
 		throw new Error("Failed to login");
 	}
 	localStorage.setItem("sessionId", new Date().getTime().toString());
@@ -74,8 +83,3 @@ export async function register({
 
 	return res.json();
 }
-
-type User = {
-	id: number;
-	name: string;
-};

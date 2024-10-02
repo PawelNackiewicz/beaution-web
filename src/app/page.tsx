@@ -1,8 +1,5 @@
-export default function Home() {
-  return (
-    <div className="h-full w-full py-4">
-      <h1 className="text-6xl font-bold mt-10">Welcome to Next.js!</h1>
-      <p>This is dev branch</p>
-    </div>
-  )
+import { PublicLayout } from "@/components/organisms/layouts/PublicLayout";
+
+export default function Home({ children }: { children?: React.ReactNode }) {
+	return <PublicLayout>{children}</PublicLayout>;
 }

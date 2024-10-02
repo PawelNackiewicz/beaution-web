@@ -28,7 +28,7 @@ export {
 	useFormField,
 } from "./form/Form";
 export { Icon } from "./icon/Icon";
-export { Navigation } from "./navigation/Navigation";
+export { TopNavigation } from "./navigation/TopNavigation";
 export { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs/Tabs";
 export {
 	Toast,
@@ -43,3 +43,4 @@ export {
 } from "./toast/Toast";
 export { Toaster } from "./toast/Toaster";
 export { reducer, toast, useToast } from "./toast/use-toast";
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from "./card/Card";
