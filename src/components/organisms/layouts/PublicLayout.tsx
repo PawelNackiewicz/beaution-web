@@ -4,7 +4,7 @@ export const PublicLayout = ({ children }: { children?: React.ReactNode }) => {
 	return (
 		<div className="flex min-h-screen w-full flex-col">
 			<TopNavigation />
-			<div className="h-full w-full px-4">{children}</div>
+			<div className="h-full w-full">{children}</div>
 			<footer className="border-t text-center">Public Footer - Copyright 2024</footer>
 		</div>
 	);
