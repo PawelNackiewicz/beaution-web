@@ -54,8 +54,8 @@ export function RegisterForm() {
 		try {
 			await register(data);
 			toast({
-				variant: "default",
-				title: "Logged in",
+				variant: "success",
+				title: "Rejestracja przebiegła pomyślnie, sprawdź swoją pocztę aby aktywować konto",
 			});
 		} catch (e) {
 			toast({

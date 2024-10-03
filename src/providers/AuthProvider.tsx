@@ -1,11 +1,6 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getMe, logout } from "@/services/authService";
-
-export interface User {
-	id: number;
-	name: string;
-}
+import { getMe, logout, type User } from "@/services/authService";
 
 interface AuthProviderType {
 	user: User | null;
@@ -16,7 +11,7 @@ interface AuthProviderType {
 const AuthContext = createContext<AuthProviderType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-	const [user, setUser] = useState<{ id: number; name: string } | null>(null);
+	const [user, setUser] = useState<User | null>(null);
 
 	useEffect(() => {
 		getMe()

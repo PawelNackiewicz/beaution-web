@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import { Navigation } from "@/components/organisms/navigation/Navigation";
 import { cn } from "@/lib/utils";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { ThemeProvider } from "@/providers/ThemeProviders";
@@ -28,13 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					disableTransitionOnChange
 				>
 					<AuthProvider>
-						<ToasterProvider>
-							<div className="flex min-h-screen w-full flex-col">
-								<Navigation />
-								<div className="m-auto h-full">{children}</div>
-								<footer className="border-t text-center">2023</footer>
-							</div>
-						</ToasterProvider>
+						<ToasterProvider>{children}</ToasterProvider>
 					</AuthProvider>
 				</ThemeProvider>
 			</body>

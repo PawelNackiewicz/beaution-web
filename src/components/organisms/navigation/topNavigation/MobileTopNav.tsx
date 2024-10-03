@@ -2,11 +2,11 @@
 import { MenuIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { links } from "./links";
+import { links } from "../links";
 import { useAuth } from "@/providers/AuthProvider";
 import { Button, Logo, ThemeSwitcher } from "@/components/atoms";
 
-export const MobileNavigation = () => {
+export const MobileTopNav = () => {
 	const { user, signOut } = useAuth();
 	const [isOpen, setIsOpen] = useState(false);
 
