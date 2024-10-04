@@ -3,7 +3,6 @@ import { Reminders } from "./components/Reminders";
 import { NotificationBar } from "./components/NotificationBar";
 import { RecentActivity } from "./components/RecentActivity";
 import { Calendar } from "./components/Calendar";
-import { Button } from "@/components/atoms";
 
 export default function PanelPage() {
 	return (
