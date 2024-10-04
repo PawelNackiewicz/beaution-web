@@ -5,6 +5,7 @@ import { AuthProvider } from "@/providers/AuthProvider";
 import { ThemeProvider } from "@/providers/ThemeProviders";
 import { ToasterProvider } from "@/providers/ToasterProvider";
 import "./globals.css";
+import { TopNavigation } from "@/components/organisms";
 
 const fontSans = FontSans({
 	subsets: ["latin"],
@@ -27,7 +28,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					disableTransitionOnChange
 				>
 					<AuthProvider>
-						<ToasterProvider>{children}</ToasterProvider>
+						<ToasterProvider>
+							<div className="flex h-full min-h-screen w-full flex-col ">
+								<TopNavigation />
+								<div className="flex h-full w-full flex-1">{children}</div>
+								<footer className="border-t text-center">Public Footer - Copyright 2024</footer>
+							</div>
+						</ToasterProvider>
 					</AuthProvider>
 				</ThemeProvider>
 			</body>

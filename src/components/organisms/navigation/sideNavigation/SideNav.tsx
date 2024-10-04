@@ -7,6 +7,7 @@ import {
 	CircleArrowRight,
 } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/atoms";
 
 type NavItem = {
@@ -49,16 +50,18 @@ export const SideNav = () => {
 
 	return (
 		<div
-			className={`relative flex h-full flex-col gap-4 border-r bg-white transition-all duration-300 ${
-				expand ? "w-64" : "w-16"
+			className={`relative flex h-full flex-col gap-4 border-r transition-all duration-300 ${
+				expand ? "w-48" : "w-16"
 			}`}
 		>
 			{navItems.map((item, index) => (
-				<Button key={index} variant="ghost">
-					<span className="flex w-full items-center gap-1">
-						{item.icon} {expand && item.label}
-					</span>
-				</Button>
+				<Link href={item.href} key={`${item.label}__${index}`}>
+					<Button variant="ghost">
+						<span className="flex w-full items-center gap-1">
+							{item.icon} {expand && item.label}
+						</span>
+					</Button>
+				</Link>
 			))}
 			<Button
 				variant="ghost"

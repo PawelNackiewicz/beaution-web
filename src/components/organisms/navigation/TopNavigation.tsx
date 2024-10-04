@@ -1,4 +1,3 @@
-"use client";
 import { DesktopTopNav } from "./topNavigation/DesktopTopNav";
 import { MobileTopNav } from "./topNavigation/MobileTopNav";
 
