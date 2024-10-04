@@ -4,8 +4,8 @@ export const links = [
 		label: "O Projekcie",
 	},
 	{
-		href: "/funkcje",
-		label: "Funkcje",
+		href: "/cennik",
+		label: "Cennik",
 	},
 	{
 		href: "/blog",

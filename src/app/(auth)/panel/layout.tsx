@@ -2,7 +2,7 @@
 import { type ReactNode } from "react";
 import { redirect } from "next/navigation";
 import { useAuth } from "@/providers/AuthProvider";
-import { AuthLayout } from "@/components/organisms/layouts/AuthLayout";
+import { SideNav } from "@/components/organisms/navigation/sideNavigation/SideNav";
 
 interface LayoutProps {
 	children: ReactNode;
@@ -15,5 +15,10 @@ export default function PanelLayout({ children }: LayoutProps) {
 		redirect("/logowanie");
 	}
 
-	return <AuthLayout>{children}</AuthLayout>;
+	return (
+		<div className="w-full flex-grow flex">
+			<SideNav />
+			{children}
+		</div>
+	);
 }
