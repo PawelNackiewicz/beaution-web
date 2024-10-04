@@ -12,13 +12,13 @@ export default function PanelPage() {
 				<NotificationBar />
 			</div>
 			<div className="grid h-full w-full grid-cols-12 gap-4">
-			<div className="col-span-9 flex flex-col gap-4">
-				<Calendar />
-			</div>
-			<div className="col-span-3 flex flex-col gap-4">
-				<Reminders />
-				<RecentActivity />
-			</div>
+				<div className="col-span-9 flex flex-col gap-4">
+					<Calendar />
+				</div>
+				<div className="col-span-3 flex flex-col gap-4">
+					<Reminders />
+					<RecentActivity />
+				</div>
 			</div>
 		</div>
 	);

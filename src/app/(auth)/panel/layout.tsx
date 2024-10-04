@@ -16,7 +16,7 @@ export default function PanelLayout({ children }: LayoutProps) {
 	}
 
 	return (
-		<div className="w-full flex-grow flex">
+		<div className="flex w-full flex-grow">
 			<SideNav />
 			{children}
 		</div>
