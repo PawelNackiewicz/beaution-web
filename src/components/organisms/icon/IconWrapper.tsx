@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type JSX } from "react";
 
 export interface IconProps {
 	size?: number | "current";
